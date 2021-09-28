@@ -2,7 +2,7 @@
 
 https://github.com/kilic/evmbls/
 
-Pessimistic verification:
+## Pessimistic verification:
 
 ```
 verify single signature:: 114759
@@ -18,4 +18,27 @@ verify signature for 90 distinct message: 3276781
 verify signature for 100 distinct message: 3632247
 ```
 
-TODO: Pessimistic verification
+## Optimistic saving
+
+```
+pragma solidity >=0.8.0 <0.9.0;
+
+contract SaveBytes {
+    
+    uint256[4][] pubkeys;
+    uint256[2][] messages;
+
+    function save(
+        uint256[4][] calldata _pubkeys,
+        uint256[2][] calldata _messages
+    ) public {
+        
+        pubkeys = _pubkeys;
+        messages = _messages;
+
+    }
+
+}
+```
+
+Gas spending for 1 pk and message - `201441`
